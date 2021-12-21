@@ -1,12 +1,10 @@
 #pragma once
 #include <string>
 #include <stack>
-#include <iostream>
 using namespace std;
 
+class FunctionParser{
 
-class FunctionParser
-{
 private:
 
 	//function declarations

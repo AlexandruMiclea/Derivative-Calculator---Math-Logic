@@ -18,7 +18,7 @@ int main() {
     parser.fnParseExpression();
     sAfterParse = parser.sfnGetExpression();
 
-    //cout << sAfterParse;
+    cout << sAfterParse;
 
     // create an expression tree from sAfterParse
     //                                *
