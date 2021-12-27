@@ -1,11 +1,16 @@
 #pragma once
+#include <string>
+using namespace std;
+
 class ExpressionTree{
 
 private:
 	struct node {
-		int data;
-		node* left,* right;
+		string sData;
+		node* pRight,* pLeft;
 	};
+
+	struct node* fnCreateNode();
 public:
 
 };
