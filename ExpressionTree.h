@@ -1,17 +1,29 @@
 #pragma once
 #include <string>
+#include <vector>
 using namespace std;
+
+struct node {
+	string sData;
+	node* pRight, * pLeft;
+};
 
 class ExpressionTree{
 
 private:
-	struct node {
-		string sData;
-		node* pRight,* pLeft;
-	};
+	//variables
+	
+	node Tree;
+	string sExpression;
 
-	struct node* fnCreateNode();
+protected:
+
+	
 public:
-
+	void fnSetExpression(string);
+	bool bfnIsOperator(string);
+	void fnCreateTree();
+	node* createNode(string);
+	void fnGetTree();
 };
 

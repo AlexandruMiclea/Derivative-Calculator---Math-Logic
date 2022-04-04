@@ -1,9 +1,5 @@
 #include "FunctionParser.h"
 
-//variables
-stack <string> stValues;
-stack <string> stOperators;
-string sExpression, sReturnExpression;
 
 bool FunctionParser::bfnIsOperator(string sArg) {
 	return sArg == "+" ||
