@@ -5,7 +5,7 @@
 using namespace std;
 
 string sInput;
-vector <string> sAfterParse;
+stack <string> sAfterParse;
 FunctionParser parser;
 //ExpressionTree tree;
 
@@ -21,8 +21,9 @@ int main() {
     parser.fnParseExpression();
     sAfterParse = parser.sfnGetExpression();
 
-    for (auto& x : sAfterParse) {
-        cout << x << ' ';
+    while (!sAfterParse.empty()) {
+        cout << sAfterParse.top();
+        sAfterParse.pop();
     }
 
     // create an expression tree from sAfterParse

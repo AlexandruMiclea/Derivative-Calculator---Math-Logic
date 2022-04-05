@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 #include <stack>
-#include <vector>
-
 using namespace std;
 
 class FunctionParser{
@@ -13,7 +11,7 @@ private:
 	stack <string> stValues;
 	stack <string> stOperators;
 	string sExpression;
-	vector <string> vsReturn;
+	stack <string> stsReturn;
 
 	//function declarations
 	bool bfnIsOperator(string);
@@ -23,6 +21,6 @@ public:
 	
 	void fnSetExpression(string);
 	void fnParseExpression();
-	vector <string> sfnGetExpression();
+	stack <string> sfnGetExpression();
 };
 

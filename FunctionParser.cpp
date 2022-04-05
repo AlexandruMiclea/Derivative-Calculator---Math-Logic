@@ -16,9 +16,8 @@ int FunctionParser::ifnPriority(string sArg) {
 	return -1;
 }
 
-vector <string> FunctionParser::sfnGetExpression(){ 
-	reverse(vsReturn.begin(), vsReturn.end());
-	return vsReturn;
+stack <string> FunctionParser::sfnGetExpression(){ 
+	return stsReturn;
 }
 
 void FunctionParser::fnSetExpression(string sArg) { sExpression = sArg; }
@@ -29,14 +28,14 @@ void FunctionParser::fnParseExpression() {
 		if (sExpression[i] == '(') stOperators.push("(");
 		else if (sExpression[i] == ')') {
 			while (stOperators.top() != "(") {
-				vsReturn.push_back(stOperators.top());
+				stsReturn.push(stOperators.top());
 				stOperators.pop();
 			}
 			stOperators.pop();
 		}
 		else if (bfnIsOperator(sExpression.substr(i, 1))) {
 			while (!stOperators.empty() && (ifnPriority(stOperators.top()) >= ifnPriority(sExpression.substr(i, 1)))) {
-				vsReturn.push_back(stOperators.top());
+				stsReturn.push(stOperators.top());
 				stOperators.pop();
 			}
 			stOperators.push(sExpression.substr(i, 1));
@@ -47,12 +46,12 @@ void FunctionParser::fnParseExpression() {
 				 sValue += sExpression[i++];
 			}
 			--i;
-			vsReturn.push_back(sValue);
+			stsReturn.push(sValue);
 		}
 	}
 
 	while (!stOperators.empty()) {
-		vsReturn.push_back(stOperators.top());
+		stsReturn.push(stOperators.top());
 		stOperators.pop();
 	}
 }
