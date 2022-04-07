@@ -1,6 +1,5 @@
 #include "FunctionParser.h"
 
-
 bool FunctionParser::bfnIsOperator(string sArg) {
 	return sArg == "+" ||
 		sArg == "-" ||

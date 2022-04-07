@@ -7,13 +7,11 @@ class FunctionParser{
 
 private:
 
-	//variables
 	stack <string> stValues;
 	stack <string> stOperators;
 	string sExpression;
 	stack <string> stsReturn;
 
-	//function declarations
 	bool bfnIsOperator(string);
 	int ifnPriority(string);
 

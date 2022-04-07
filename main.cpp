@@ -1,13 +1,13 @@
 #include <iostream>
 #include "FunctionParser.h"
-//#include "ExpressionTree.h"
+#include "ExpressionTree.h"
 
 using namespace std;
 
 string sInput;
 stack <string> sAfterParse;
 FunctionParser parser;
-//ExpressionTree tree;
+ExpressionTree tree;
 
 int main() {
 
@@ -21,9 +21,11 @@ int main() {
     parser.fnParseExpression();
     sAfterParse = parser.sfnGetExpression();
 
-    while (!sAfterParse.empty()) {
-        cout << sAfterParse.top();
-        sAfterParse.pop();
+    stack <string> stsCopy = sAfterParse;
+
+    while (!stsCopy.empty()) {
+        cout << stsCopy.top();
+        stsCopy.pop();
     }
 
     // create an expression tree from sAfterParse
@@ -33,7 +35,13 @@ int main() {
 
     //TODO
 
-    //tree.fnSetExpression(sAfterParse);
+    tree.fnSetExpression(sAfterParse);
+    tree.fnCreateTree();
+
+    node* functionTree = new node;
+    functionTree = tree.fnGetTree();
+
+    cout << functionTree->sData;
 
     // derive each operation of the tree according to derivation rules
     // e.g. 5x^3 -> 0 * x^3 + 5 * 3x^2  -> 15x^2

@@ -5,25 +5,20 @@ using namespace std;
 
 struct node {
 	string sData;
-	node* pRight, * pLeft;
+	node *pRight, *pLeft, *pDad;
 };
 
 class ExpressionTree{
 
 private:
-	//variables
-	
-	node Tree;
+	node *Tree = NULL, *head = NULL;
 	stack <string> stsExpression;
-
-protected:
-
-	
-public:
-	void fnSetExpression(stack <string>);
 	bool bfnIsOperator(string);
+
+public:
+
+	void fnSetExpression(stack <string>);
 	void fnCreateTree();
-	node* createNode(string);
-	void fnGetTree();
+	node* fnGetTree();
 };
 
