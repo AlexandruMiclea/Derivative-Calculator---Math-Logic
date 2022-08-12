@@ -20,5 +20,6 @@ public:
 	void fnSetExpression(stack <string>);
 	void fnCreateTree();
 	node* fnGetTree();
+	node* fnGetDerivatedTree(node*);
 };
 

@@ -4,6 +4,8 @@
 void ExpressionTree::fnSetExpression(stack <string> stsArg) { stsExpression = stsArg; }
 node* ExpressionTree::fnGetTree() { return head; }
 
+
+
 bool ExpressionTree::bfnIsOperator(string sArg) {
 	return sArg == "+" ||
 		sArg == "-" ||
@@ -12,10 +14,12 @@ bool ExpressionTree::bfnIsOperator(string sArg) {
 		sArg == "^";
 }
 
+
 void ExpressionTree::fnCreateTree() {
 	// add the first node 
 
 	//nu ii place ca accesez stsExpression
+	//nu asta este problema, are ceva de a face cu arborele
 
 	node* create = new node;
 	create->sData = stsExpression.top();
@@ -28,24 +32,46 @@ void ExpressionTree::fnCreateTree() {
 	head = create;
 
 	while (!stsExpression.empty()) {
+		bool bIsPlaced = false;
 		create = new node;
 		create->sData = stsExpression.top();
+		create->pDad = NULL;
+		create->pLeft = NULL;
+		create->pRight = NULL;
 
-		create->pDad = Tree;
-		if (Tree->pLeft != NULL && Tree->pRight != NULL) {
-			// go upwards until you find a free right node
-			while (Tree->pRight != NULL) Tree = Tree->pDad;
+		if (Tree->pLeft == NULL) {
+			Tree->pLeft = create;
+			bIsPlaced = true;
+		}
+		else if (Tree->pRight == NULL) {
+			Tree->pRight = create;
+			bIsPlaced = true;
 		}
 
-		if (Tree->pLeft == NULL) Tree->pLeft = create;
-		else if (Tree->pRight == NULL)Tree->pRight = create;
+		if (Tree->pRight != NULL && !bIsPlaced) {
+			// go upwards until you find a free right node
+			while (Tree->pDad != NULL) Tree = Tree->pDad;
+			Tree->pRight = create;
+		}
+
+		create->pDad = Tree;
 
 		if (bfnIsOperator(stsExpression.top())) {
 			Tree = create;
 		}
+		
 
 		stsExpression.pop();
 	}
+}
+
+node* ExpressionTree::fnGetDerivatedTree(node* nodeArg){
+
+	// check whether you have a node or a leaf
+	// if node, derive using switch case
+	// if leaf, number -> 0, x -> 1
+
+	return nullptr;
 }
 
 

@@ -24,6 +24,9 @@
     <ClCompile Include="ExpressionTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DerivativeCalc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FunctionParser.h">
@@ -32,5 +35,16 @@
     <ClInclude Include="ExpressionTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DerivativeCalc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Derivative Calculator - Math Logic.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

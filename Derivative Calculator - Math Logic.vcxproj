@@ -139,13 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DerivativeCalc.cpp" />
     <ClCompile Include="ExpressionTree.cpp" />
     <ClCompile Include="FunctionParser.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DerivativeCalc.h" />
     <ClInclude Include="ExpressionTree.h" />
     <ClInclude Include="FunctionParser.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Derivative Calculator - Math Logic.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
