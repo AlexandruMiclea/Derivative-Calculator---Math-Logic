@@ -42,18 +42,22 @@ int main() {
 
     node* functionTree = new node;
     functionTree = tree.fnGetTree();
+    cout << '\n';
     cout << functionTree->sData;
     cout << '\n';
     cout << functionTree->pRight->sData;
     cout << '\n';
     cout << functionTree->pLeft->sData;
+    cout << '\n';
+    cout << functionTree->pLeft->pLeft->sData;
+    cout << '\n';
+    cout << functionTree->pLeft->pRight->sData;
 
     // derive each operation of the tree according to derivation rules
     // e.g. 5x^3 -> 0 * x^3 + 5 * 3x^2  -> 15x^2
 
-    //TODO
-
-    node* firstDerivative = fnGetDerivatedTree(functionTree);
+    // CHANGE
+    node* firstDerivative = calc.fnGetDerivatedTree(functionTree);
 
     //cout << sInput;
 

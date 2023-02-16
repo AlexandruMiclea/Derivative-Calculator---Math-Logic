@@ -1,18 +1,9 @@
 #include "ExpressionTree.h"
+#include "FunctionParser.h"
 #include <iostream>
 
 void ExpressionTree::fnSetExpression(stack <string> stsArg) { stsExpression = stsArg; }
 node* ExpressionTree::fnGetTree() { return head; }
-
-
-
-bool ExpressionTree::bfnIsOperator(string sArg) {
-	return sArg == "+" ||
-		sArg == "-" ||
-		sArg == "*" ||
-		sArg == "/" ||
-		sArg == "^";
-}
 
 
 void ExpressionTree::fnCreateTree() {
@@ -56,7 +47,7 @@ void ExpressionTree::fnCreateTree() {
 
 		create->pDad = Tree;
 
-		if (bfnIsOperator(stsExpression.top())) {
+		if (FunctionParser::bfnIsOperator(stsExpression.top())) {
 			Tree = create;
 		}
 		

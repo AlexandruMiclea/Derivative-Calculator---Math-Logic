@@ -11,12 +11,11 @@ private:
 	stack <string> stOperators;
 	string sExpression;
 	stack <string> stsReturn;
-
-	bool bfnIsOperator(string);
 	int ifnPriority(string);
 
 public:
 	
+	static bool bfnIsOperator(string);
 	void fnSetExpression(string);
 	void fnParseExpression();
 	stack <string> sfnGetExpression();

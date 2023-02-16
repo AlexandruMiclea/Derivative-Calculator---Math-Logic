@@ -5,7 +5,7 @@ using namespace std;
 
 struct node {
 	string sData;
-	node *pRight, *pLeft, *pDad;
+	node *pRight = NULL, *pLeft = NULL, *pDad = NULL;
 };
 
 class ExpressionTree{
@@ -13,7 +13,6 @@ class ExpressionTree{
 private:
 	node *Tree = NULL, *head = NULL;
 	stack <string> stsExpression;
-	bool bfnIsOperator(string);
 
 public:
 
