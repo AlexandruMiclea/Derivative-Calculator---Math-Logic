@@ -19,6 +19,7 @@ int main() {
     // transform the input from an infix to a postfix notation
     // e.g. 5*x^3 -> 5x3^*
 
+
     parser.fnSetExpression(sInput);
     parser.fnParseExpression();
     sAfterParse = parser.sfnGetExpression();
