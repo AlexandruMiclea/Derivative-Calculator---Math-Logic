@@ -1,5 +1,5 @@
-#include "DerivativeCalc.h"
-#include "ExpressionTree.h"
+#include "DerivativeCalc.hpp"
+#include "ExpressionTree.hpp"
 #include <iostream>
 
 
@@ -154,7 +154,7 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 
 		return ret;
 	}
-
+	return NULL;
 }
 
 

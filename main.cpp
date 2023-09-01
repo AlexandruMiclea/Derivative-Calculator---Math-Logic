@@ -1,7 +1,7 @@
 #include <iostream>
-#include "FunctionParser.h"
-#include "ExpressionTree.h"
-#include "DerivativeCalc.h"
+#include "FunctionParser.hpp"
+#include "ExpressionTree.hpp"
+#include "DerivativeCalc.hpp"
 
 using namespace std;
 

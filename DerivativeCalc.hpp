@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "ExpressionTree.h"
+#include "ExpressionTree.hpp"
 using namespace std;
 
 class DerivativeCalc {
