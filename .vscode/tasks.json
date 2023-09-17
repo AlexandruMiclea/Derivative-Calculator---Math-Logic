@@ -5,9 +5,13 @@
             "label": "C/C++: g++ build all cpp files",
             "command": "/usr/bin/g++",
             "args": [
+                "-Wall",
+                "-Wextra",
+                "-std=c++23",
                 "-fdiagnostics-color=always",
                 "-g",
-                "${workspaceFolder}/*.cpp",
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/src/*.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.o"
             ],

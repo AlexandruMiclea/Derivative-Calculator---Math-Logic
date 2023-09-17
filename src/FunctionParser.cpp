@@ -1,4 +1,4 @@
-#include "FunctionParser.hpp"
+#include "../lib/FunctionParser.hpp"
 
 bool FunctionParser::bfnIsOperator(string sArg) {
 	return sArg == "+" ||

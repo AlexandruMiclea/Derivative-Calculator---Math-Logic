@@ -1,6 +1,5 @@
-#include "DerivativeCalc.hpp"
-#include "ExpressionTree.hpp"
-#include <iostream>
+#include "../lib/DerivativeCalc.hpp"
+#include "../lib/ExpressionTree.hpp"
 
 
 bool DerivativeCalc::bfnIsOperator(string sArg) {
@@ -59,12 +58,12 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 		return ret;
 	}
 	else if (nodeArg->sData == "*") {
-		cout << 'a';
+		//cout << 'a';
 		node* ret = new node;
 		ret->sData = "+";
 		ret->pDad = nodeArg->pDad;
 
-		cout << 'b';
+		//cout << 'b';
 		node* left = new node;
 		left->sData = "*";
 		left->pDad = ret;

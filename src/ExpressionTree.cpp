@@ -1,6 +1,5 @@
-#include "ExpressionTree.hpp"
-#include "FunctionParser.hpp"
-#include <iostream>
+#include "../lib/ExpressionTree.hpp"
+#include "../lib/FunctionParser.hpp"
 
 void ExpressionTree::fnSetExpression(stack <string> stsArg) { stsExpression = stsArg; }
 node* ExpressionTree::fnGetTree() { return head; }
