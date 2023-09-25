@@ -7,17 +7,17 @@ class FunctionParser{
 
 private:
 
-	stack <string> stValues;
-	stack <string> stOperators;
-	string sExpression;
-	stack <string> stsReturn;
-	int ifnPriority(string);
+	stack <string> values;
+	stack <string> operators;
+	string expression;
+	stack <string> result;
+	int getPriority(string);
 
 public:
 	
-	static bool bfnIsOperator(string);
-	void fnSetExpression(string);
-	void fnParseExpression();
-	stack <string> sfnGetExpression();
+	static bool isOperator(string); // dc am static?
+	void setExpression(string);
+	void parseExpression();
+	stack <string> getExpression();
 };
 

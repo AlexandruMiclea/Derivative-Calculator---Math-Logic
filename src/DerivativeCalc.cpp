@@ -2,7 +2,7 @@
 #include "../lib/ExpressionTree.hpp"
 
 
-bool DerivativeCalc::bfnIsOperator(string sArg) {
+bool DerivativeCalc::isOperator(string sArg) {
 
 	return sArg == "+" ||
 		sArg == "-" ||
@@ -11,14 +11,14 @@ bool DerivativeCalc::bfnIsOperator(string sArg) {
 		sArg == "^";
 }
 
-bool DerivativeCalc::bfnIsNumber(string sArg) {
+bool DerivativeCalc::isNumber(string sArg) {
 	for (auto& x : sArg) {
 		if (isdigit(x) == 0) return false;
 	}
 	return true;
 }
 
-node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
+node* DerivativeCalc::deriveTree(node* nodeArg){
 
 	if (nodeArg->sData == "x") {
 		node* ret = new node;
@@ -29,7 +29,7 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 
 		return ret;
 	}
-	else if (bfnIsNumber(nodeArg->sData)) {
+	else if (isNumber(nodeArg->sData)) {
 		node* ret = new node;
 		ret->sData = "0";
 		ret->pDad = nodeArg->pDad;
@@ -42,8 +42,8 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 		node* ret = new node;
 		ret->sData = "+";
 		ret->pDad = nodeArg->pDad;
-		ret->pLeft = fnGetDerivatedTree(nodeArg->pLeft);
-		ret->pRight = fnGetDerivatedTree(nodeArg->pRight);
+		ret->pLeft = deriveTree(nodeArg->pLeft);
+		ret->pRight = deriveTree(nodeArg->pRight);
 
 		return ret;
 
@@ -52,8 +52,8 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 		node* ret = new node;
 		ret->sData = "-";
 		ret->pDad = nodeArg->pDad;
-		ret->pLeft = fnGetDerivatedTree(nodeArg->pLeft);
-		ret->pRight = fnGetDerivatedTree(nodeArg->pRight);
+		ret->pLeft = deriveTree(nodeArg->pLeft);
+		ret->pRight = deriveTree(nodeArg->pRight);
 
 		return ret;
 	}
@@ -67,14 +67,14 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 		node* left = new node;
 		left->sData = "*";
 		left->pDad = ret;
-		left->pLeft = fnGetDerivatedTree(nodeArg->pLeft);
+		left->pLeft = deriveTree(nodeArg->pLeft);
 		left->pRight = nodeArg->pRight;
 
 		node* right = new node;
 		right->sData = "*";
 		right->pDad = ret;
 		right->pLeft = nodeArg->pLeft;
-		right->pRight = fnGetDerivatedTree(nodeArg->pRight);
+		right->pRight = deriveTree(nodeArg->pRight);
 
 		ret->pLeft = left;
 		ret->pRight = right;
@@ -97,13 +97,13 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 
 		leftleft->sData = "*";
 		leftleft->pDad = left;
-		leftleft->pLeft = fnGetDerivatedTree(nodeArg->pLeft);
+		leftleft->pLeft = deriveTree(nodeArg->pLeft);
 		leftleft->pRight = nodeArg->pRight;
 
 		leftright->sData = "*";
 		leftright->pDad = left;
 		leftright->pLeft = nodeArg->pLeft;
-		leftright->pRight = fnGetDerivatedTree(nodeArg->pRight);
+		leftright->pRight = deriveTree(nodeArg->pRight);
 
 		left->sData = "-";
 		left->pDad = ret;
@@ -127,7 +127,7 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 
 		node* ret = new node;
 		node* left = new node;
-		node* right = new node;
+		//node* right = new node;
 		node* leftleft = new node;
 		node* lessone = new node;
 
@@ -149,7 +149,7 @@ node* DerivativeCalc::fnGetDerivatedTree(node* nodeArg){
 		ret->sData = "*";
 		ret->pDad = nodeArg->pDad;
 		ret->pLeft = left;
-		ret->pRight = fnGetDerivatedTree(nodeArg->pRight);
+		ret->pRight = deriveTree(nodeArg->pRight);
 
 		return ret;
 	}

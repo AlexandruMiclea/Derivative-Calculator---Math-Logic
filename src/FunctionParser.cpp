@@ -1,6 +1,6 @@
 #include "../lib/FunctionParser.hpp"
 
-bool FunctionParser::bfnIsOperator(string sArg) {
+bool FunctionParser::isOperator(string sArg) {
 	return sArg == "+" ||
 		sArg == "-" ||
 		sArg == "*" ||
@@ -8,50 +8,50 @@ bool FunctionParser::bfnIsOperator(string sArg) {
 		sArg == "^";
 }
 
-int FunctionParser::ifnPriority(string sArg) {
+int FunctionParser::getPriority(string sArg) {
 	if (sArg == "+" || sArg == "-") return 1;
 	if (sArg == "*" || sArg == "/") return 2;
 	if (sArg == "^" ) return 3;
 	return -1;
 }
 
-stack <string> FunctionParser::sfnGetExpression(){ 
-	return stsReturn;
+stack <string> FunctionParser::getExpression(){ 
+	return result;
 }
 
-void FunctionParser::fnSetExpression(string sArg) { sExpression = sArg; }
+void FunctionParser::setExpression(string sArg) { expression = sArg; }
 
-void FunctionParser::fnParseExpression() {
-	for (int i = 0; i < (int)sExpression.size(); i++) {
+void FunctionParser::parseExpression() {
+	for (int i = 0; i < (int)expression.size(); i++) {
 
-		if (sExpression[i] == '(') stOperators.push("(");
-		else if (sExpression[i] == ')') {
-			while (stOperators.top() != "(") {
-				stsReturn.push(stOperators.top());
-				stOperators.pop();
+		if (expression[i] == '(') operators.push("(");
+		else if (expression[i] == ')') {
+			while (operators.top() != "(") {
+				result.push(operators.top());
+				operators.pop();
 			}
-			stOperators.pop();
+			operators.pop();
 		}
-		else if (bfnIsOperator(sExpression.substr(i, 1))) {
-			while (!stOperators.empty() && (ifnPriority(stOperators.top()) >= ifnPriority(sExpression.substr(i, 1)))) {
-				stsReturn.push(stOperators.top());
-				stOperators.pop();
+		else if (isOperator(expression.substr(i, 1))) {
+			while (!operators.empty() && (getPriority(operators.top()) >= getPriority(expression.substr(i, 1)))) {
+				result.push(operators.top());
+				operators.pop();
 			}
-			stOperators.push(sExpression.substr(i, 1));
+			operators.push(expression.substr(i, 1));
 		}
 		else {
 			string sValue = "";
-			while (i < (int)sExpression.size() && isalnum(sExpression[i])) {
-				 sValue += sExpression[i++];
+			while (i < (int)expression.size() && isalnum(expression[i])) {
+				 sValue += expression[i++];
 			}
 			--i;
-			stsReturn.push(sValue);
+			result.push(sValue);
 		}
 	}
 
-	while (!stOperators.empty()) {
-		stsReturn.push(stOperators.top());
-		stOperators.pop();
+	while (!operators.empty()) {
+		result.push(operators.top());
+		operators.pop();
 	}
 }
 

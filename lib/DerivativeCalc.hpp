@@ -5,12 +5,12 @@ using namespace std;
 
 class DerivativeCalc {
 private:
-	bool bfnIsOperator(string);
-	bool bfnIsNumber(string);
+	bool isOperator(string);
+	bool isNumber(string);
 
 public:
 	
-	node* fnGetDerivatedTree(node*);
+	node* deriveTree(node*);
 
 };
 

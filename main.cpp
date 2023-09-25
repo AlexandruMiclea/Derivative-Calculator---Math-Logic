@@ -5,8 +5,8 @@
 
 using namespace std;
 
-string sInput;
-stack <string> sAfterParse;
+string input;
+stack <string> afterParse;
 FunctionParser parser;
 ExpressionTree tree;
 DerivativeCalc calc;
@@ -14,35 +14,35 @@ DerivativeCalc calc;
 int main() {
 
     cout << "Enter the function to derive: ";
-    cin >> sInput;
+    cin >> input;
 
     // transform the input from an infix to a postfix notation
     // e.g. 5*x^3 -> 5x3^*
 
 
-    parser.fnSetExpression(sInput);
-    parser.fnParseExpression();
-    sAfterParse = parser.sfnGetExpression();
+    parser.setExpression(input);
+    parser.parseExpression();
+    afterParse = parser.getExpression();
 
-    stack <string> stsCopy = sAfterParse;
+    stack <string> stsCopy = afterParse;
 
     while (!stsCopy.empty()) {
         cout << stsCopy.top();
         stsCopy.pop();
     }
 
-    // create an expression tree from sAfterParse
+    // create an expression tree from afterParse
     //                                *
     // e.g. 5*x^3 -> *^3x5 ->       ^   5
     //                            3   x
 
     //TODO
 
-    tree.fnSetExpression(sAfterParse);
-    tree.fnCreateTree();
+    tree.setExpression(afterParse);
+    tree.createTree();
 
     node* functionTree = new node;
-    functionTree = tree.fnGetTree();
+    functionTree = tree.getTree();
     cout << '\n';
     cout << functionTree->sData;
     cout << '\n';
@@ -58,9 +58,9 @@ int main() {
     // e.g. 5x^3 -> 0 * x^3 + 5 * 3x^2  -> 15x^2
 
     // CHANGE
-    node* firstDerivative = calc.fnGetDerivatedTree(functionTree);
+    //node* firstDerivative = calc.deriveTree(functionTree);
 
-    //cout << sInput;
+    //cout << input;
 
     return 0;
 }

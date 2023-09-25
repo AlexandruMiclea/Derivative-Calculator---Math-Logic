@@ -1,30 +1,30 @@
 #include "../lib/ExpressionTree.hpp"
 #include "../lib/FunctionParser.hpp"
 
-void ExpressionTree::fnSetExpression(stack <string> stsArg) { stsExpression = stsArg; }
-node* ExpressionTree::fnGetTree() { return head; }
+void ExpressionTree::setExpression(stack <string> stsArg) { expression = stsArg; }
+node* ExpressionTree::getTree() { return head; }
 
 
-void ExpressionTree::fnCreateTree() {
+void ExpressionTree::createTree() {
 	// add the first node 
 
 	//nu ii place ca accesez stsExpression
 	//nu asta este problema, are ceva de a face cu arborele
 
 	node* create = new node;
-	create->sData = stsExpression.top();
+	create->sData = expression.top();
 	create->pDad = NULL;
 	create->pLeft = NULL;
 	create->pRight = NULL;
-	stsExpression.pop();
+	expression.pop();
 
 	Tree = create;
 	head = create;
 
-	while (!stsExpression.empty()) {
+	while (!expression.empty()) {
 		bool bIsPlaced = false;
 		create = new node;
-		create->sData = stsExpression.top();
+		create->sData = expression.top();
 		create->pDad = NULL;
 		create->pLeft = NULL;
 		create->pRight = NULL;
@@ -46,22 +46,22 @@ void ExpressionTree::fnCreateTree() {
 
 		create->pDad = Tree;
 
-		if (FunctionParser::bfnIsOperator(stsExpression.top())) {
+		if (FunctionParser::isOperator(expression.top())) {
 			Tree = create;
 		}
 		
 
-		stsExpression.pop();
+		expression.pop();
 	}
 }
 
-node* ExpressionTree::fnGetDerivatedTree(node* nodeArg){
+node* ExpressionTree::getDerivedTree(node* nodeArg){
 
 	// check whether you have a node or a leaf
 	// if node, derive using switch case
 	// if leaf, number -> 0, x -> 1
-
-	return nullptr;
+	nodeArg = nullptr;
+	return nodeArg;
 }
 
 

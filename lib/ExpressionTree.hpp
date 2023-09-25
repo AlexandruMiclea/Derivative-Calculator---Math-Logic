@@ -3,22 +3,22 @@
 #include <stack>
 using namespace std;
 
-struct node {
+typedef struct node {
 	string sData;
 	node *pRight = NULL, *pLeft = NULL, *pDad = NULL;
-};
+} node;
 
 class ExpressionTree{
 
 private:
 	node *Tree = NULL, *head = NULL;
-	stack <string> stsExpression;
+	stack <string> expression;
 
 public:
 
-	void fnSetExpression(stack <string>);
-	void fnCreateTree();
-	node* fnGetTree();
-	node* fnGetDerivatedTree(node*);
+	void setExpression(stack <string>);
+	void createTree();
+	node* getTree();
+	node* getDerivedTree(node*);
 };
 
