@@ -20,5 +20,5 @@ public:
 	void createTree();
 	node* getTree();
 	node* getDerivedTree(node*);
+	string printTree(node*);
 };
-

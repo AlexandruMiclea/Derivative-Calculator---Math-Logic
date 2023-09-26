@@ -20,4 +20,3 @@ public:
 	void parseExpression();
 	stack <string> getExpression();
 };
-

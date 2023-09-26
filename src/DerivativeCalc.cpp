@@ -155,6 +155,3 @@ node* DerivativeCalc::deriveTree(node* nodeArg){
 	}
 	return NULL;
 }
-
-
-//ExpressionTree tree;

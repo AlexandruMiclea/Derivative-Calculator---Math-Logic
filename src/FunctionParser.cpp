@@ -54,6 +54,3 @@ void FunctionParser::parseExpression() {
 		operators.pop();
 	}
 }
-
-
-

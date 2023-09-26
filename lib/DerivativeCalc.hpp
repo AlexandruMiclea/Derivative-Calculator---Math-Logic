@@ -13,4 +13,3 @@ public:
 	node* deriveTree(node*);
 
 };
-

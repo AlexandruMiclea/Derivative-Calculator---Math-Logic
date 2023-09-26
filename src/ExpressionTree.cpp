@@ -64,8 +64,20 @@ node* ExpressionTree::getDerivedTree(node* nodeArg){
 	return nodeArg;
 }
 
+string ExpressionTree::printTree(node* ptr) {
 
+	// preorder printing of the tree
 
+	// if node is nullptr use head
 
+	if (ptr == nullptr) ptr = head;
 
+	string res = ptr->sData;
+	if (ptr->pLeft != nullptr)
+		res += printTree(ptr->pLeft);
+	if (ptr->pRight != nullptr)
+		res += printTree(ptr->pRight);
 
+	if (ptr == nullptr) return "";
+	return res;
+}
