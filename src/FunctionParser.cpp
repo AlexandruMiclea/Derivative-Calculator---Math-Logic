@@ -42,7 +42,7 @@ void FunctionParser::parseExpression() {
 		else {
 			string sValue = "";
 			while (i < (int)expression.size() && isalnum(expression[i])) {
-				 sValue += expression[i++];
+				sValue += expression[i++];
 			}
 			--i;
 			result.push(sValue);

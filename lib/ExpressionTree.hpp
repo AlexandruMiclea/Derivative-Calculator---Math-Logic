@@ -9,13 +9,10 @@ typedef struct node {
 } node;
 
 class ExpressionTree{
-
 private:
 	node *Tree = NULL, *head = NULL;
 	stack <string> expression;
-
 public:
-
 	void setExpression(stack <string>);
 	void createTree();
 	node* getTree();

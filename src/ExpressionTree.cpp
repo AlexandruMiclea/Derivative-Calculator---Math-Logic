@@ -4,13 +4,7 @@
 void ExpressionTree::setExpression(stack <string> stsArg) { expression = stsArg; }
 node* ExpressionTree::getTree() { return head; }
 
-
 void ExpressionTree::createTree() {
-	// add the first node 
-
-	//nu ii place ca accesez stsExpression
-	//nu asta este problema, are ceva de a face cu arborele
-
 	node* create = new node;
 	create->sData = expression.top();
 	create->pDad = nullptr;
@@ -50,7 +44,6 @@ void ExpressionTree::createTree() {
 			Tree = create;
 		}
 		
-
 		expression.pop();
 	}
 }
@@ -58,8 +51,7 @@ void ExpressionTree::createTree() {
 string ExpressionTree::printTree(node* ptr) {
 
 	// preorder printing of the tree
-
-	// if node is nullptrptr use head
+	// if node is nullptr use head
 
 	if (ptr == nullptr) ptr = head;
 

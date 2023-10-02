@@ -1,7 +1,6 @@
 #include "../lib/DerivativeCalc.hpp"
 #include "../lib/ExpressionTree.hpp"
 
-
 bool DerivativeCalc::isOperator(string sArg) {
 
 	return sArg == "+" ||
@@ -58,12 +57,10 @@ node* DerivativeCalc::deriveTree(node* nodeArg){
 		return ret;
 	}
 	else if (nodeArg->sData == "*") {
-		//cout << 'a';
 		node* ret = new node;
 		ret->sData = "+";
 		ret->pDad = nodeArg->pDad;
 
-		//cout << 'b';
 		node* left = new node;
 		left->sData = "*";
 		left->pDad = ret;
@@ -82,7 +79,6 @@ node* DerivativeCalc::deriveTree(node* nodeArg){
 		return ret;
 	}
 	else if (nodeArg->sData == "/") {
-
 		node* ret = new node;
 		node* left = new node;
 		node* right = new node;
@@ -123,6 +119,7 @@ node* DerivativeCalc::deriveTree(node* nodeArg){
 
 		return ret;
 	}
+	// What is there to do here
 	else if (nodeArg->sData == "^") {
 
 		node* ret = new node;

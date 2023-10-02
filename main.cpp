@@ -27,32 +27,19 @@ void runApp(){
     // e.g. 5*x^3 -> *^3x5 ->       ^   5
     //                            3   x
 
-    //TODO
-
     tree.setExpression(afterParse);
     tree.createTree();
 
-    //functionTree = tree.getTree();
-    // cout << '\n';
-    // cout << functionTree->sData;
-    // cout << '\n';
-    // cout << functionTree->pRight->sData;
-    // cout << '\n';
-    // cout << functionTree->pLeft->sData;
-    // cout << '\n';
-    // cout << functionTree->pLeft->pLeft->sData;
-    // cout << '\n';
-    // cout << functionTree->pLeft->pRight->sData;
-
     // derive each operation of the tree according to derivation rules
-    // e.g. 5x^3 -> 0 * x^3 + 5 * 3x^2  -> 15x^2
+    // e.g. 5*x^3 -> 0*x^3 + 5*3x^2  -> 15x^2
 
-    // CHANGE
+    //DEBUG
     cout << tree.printTree(nullptr) << '\n';
-    node* firstDerivative = calc.deriveTree(tree.getTree());
-    cout << tree.printTree(firstDerivative) << '\n';
 
-    //cout << input;
+    node* firstDerivative = calc.deriveTree(tree.getTree());
+
+    //DEBUG
+    cout << tree.printTree(firstDerivative) << '\n';
 }
 
 int main() {
@@ -64,5 +51,6 @@ int main() {
 
 // TODO list
 // abst class for isOperator
+// runApp does not clear itself after deriative print -> redo memory and pointers
 // merge DerivativeCalc with ExpressionTree ?? 
-// method for printing the Expression Tree
+// simplification rules

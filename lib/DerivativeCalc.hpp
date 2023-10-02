@@ -7,9 +7,6 @@ class DerivativeCalc {
 private:
 	bool isOperator(string);
 	bool isNumber(string);
-
 public:
-	
 	node* deriveTree(node*);
-
 };
