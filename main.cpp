@@ -11,8 +11,7 @@ FunctionParser parser;
 ExpressionTree tree;
 DerivativeCalc calc;
 
-int main() {
-
+void runApp(){
     cout << "Enter the function to derive: ";
     cin >> input;
 
@@ -23,14 +22,6 @@ int main() {
     parser.parseExpression();
     afterParse = parser.getExpression();
 
-    stack <string> stsCopy = afterParse;
-
-    while (!stsCopy.empty()) {
-        cout << stsCopy.top();
-        stsCopy.pop();
-    }
-    cout << '\n';
-
     // create an expression tree from afterParse
     //                                *
     // e.g. 5*x^3 -> *^3x5 ->       ^   5
@@ -40,10 +31,8 @@ int main() {
 
     tree.setExpression(afterParse);
     tree.createTree();
-    cout << tree.printTree(nullptr) << '\n';
 
-    node* functionTree = new node;
-    functionTree = tree.getTree();
+    //functionTree = tree.getTree();
     // cout << '\n';
     // cout << functionTree->sData;
     // cout << '\n';
@@ -59,10 +48,16 @@ int main() {
     // e.g. 5x^3 -> 0 * x^3 + 5 * 3x^2  -> 15x^2
 
     // CHANGE
-    node* firstDerivative = calc.deriveTree(functionTree);
-    cout << tree.getDerivedTree(firstDerivative) << '\n';
+    cout << tree.printTree(nullptr) << '\n';
+    node* firstDerivative = calc.deriveTree(tree.getTree());
+    cout << tree.printTree(firstDerivative) << '\n';
 
     //cout << input;
+}
+
+int main() {
+
+    runApp();
 
     return 0;
 }

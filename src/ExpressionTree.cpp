@@ -13,9 +13,9 @@ void ExpressionTree::createTree() {
 
 	node* create = new node;
 	create->sData = expression.top();
-	create->pDad = NULL;
-	create->pLeft = NULL;
-	create->pRight = NULL;
+	create->pDad = nullptr;
+	create->pLeft = nullptr;
+	create->pRight = nullptr;
 	expression.pop();
 
 	Tree = create;
@@ -25,22 +25,22 @@ void ExpressionTree::createTree() {
 		bool bIsPlaced = false;
 		create = new node;
 		create->sData = expression.top();
-		create->pDad = NULL;
-		create->pLeft = NULL;
-		create->pRight = NULL;
+		create->pDad = nullptr;
+		create->pLeft = nullptr;
+		create->pRight = nullptr;
 
-		if (Tree->pLeft == NULL) {
+		if (Tree->pLeft == nullptr) {
 			Tree->pLeft = create;
 			bIsPlaced = true;
 		}
-		else if (Tree->pRight == NULL) {
+		else if (Tree->pRight == nullptr) {
 			Tree->pRight = create;
 			bIsPlaced = true;
 		}
 
-		if (Tree->pRight != NULL && !bIsPlaced) {
+		if (Tree->pRight != nullptr && !bIsPlaced) {
 			// go upwards until you find a free right node
-			while (Tree->pDad != NULL) Tree = Tree->pDad;
+			while (Tree->pDad != nullptr) Tree = Tree->pDad;
 			Tree->pRight = create;
 		}
 
@@ -55,20 +55,11 @@ void ExpressionTree::createTree() {
 	}
 }
 
-node* ExpressionTree::getDerivedTree(node* nodeArg){
-
-	// check whether you have a node or a leaf
-	// if node, derive using switch case
-	// if leaf, number -> 0, x -> 1
-	nodeArg = nullptr;
-	return nodeArg;
-}
-
 string ExpressionTree::printTree(node* ptr) {
 
 	// preorder printing of the tree
 
-	// if node is nullptr use head
+	// if node is nullptrptr use head
 
 	if (ptr == nullptr) ptr = head;
 
